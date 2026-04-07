@@ -1,245 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentino Grande – CV</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #222; background: #fff; }
-
-  .container { display: flex; min-height: 100vh; }
-
-  /* Sidebar */
-  .sidebar {
-    width: 220px;
-    min-width: 220px;
-    background: #556672;
-    color: #fff;
-    padding: 32px 18px;
-  }
-  .sidebar h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  .sidebar .section-title {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 22px 0 8px;
-    color: #cdd6dc;
-  }
-  .sidebar p, .sidebar a {
-    font-size: 12px;
-    color: #eef1f3;
-    text-decoration: none;
-    line-height: 1.7;
-    word-break: break-all;
-  }
-  .sidebar a:hover { text-decoration: underline; }
-
-  .skill-item { margin-bottom: 8px; }
-  .skill-label { font-size: 12px; margin-bottom: 3px; }
-  .skill-bar { background: #8fa5b2; border-radius: 2px; height: 4px; }
-  .skill-fill { background: #fff; border-radius: 2px; height: 4px; }
-
-  .lang-item { margin-bottom: 6px; }
-  .lang-name { font-size: 12px; }
-  .lang-level { font-size: 10px; color: #cdd6dc; }
-
-  /* Main */
-  .main { flex: 1; padding: 36px 36px 36px 32px; }
-
-  .name { font-size: 42px; font-weight: 300; color: #333; margin-bottom: 24px; line-height: 1.1; }
-
-  .section { margin-bottom: 28px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 6px;
-  }
-  .section-header span {
-    background: #556672;
-    color: #fff;
-    border-radius: 3px;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 3px 12px;
-  }
-
-  .entry { margin-bottom: 14px; }
-  .entry-title { font-weight: 700; font-size: 13px; }
-  .entry-date { font-size: 11px; color: #888; margin: 2px 0 5px; }
-  .entry-body { font-size: 12.5px; line-height: 1.6; color: #444; }
-
-  .project-link { color: #556672; text-decoration: none; font-size: 11px; }
-  .project-link:hover { text-decoration: underline; }
-
-  .tag {
-    display: inline-block;
-    background: #eef1f3;
-    color: #556672;
-    border-radius: 3px;
-    font-size: 10px;
-    padding: 1px 6px;
-    margin: 2px 2px 2px 0;
-    font-weight: 600;
-  }
-
-  @media print {
-    body { font-size: 12px; }
-    .sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .section-header span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+  .cv-wrap{font-family:'EB Garamond',Georgia,serif;color:var(--color-text-primary);max-width:780px;margin:0 auto;padding:2.5rem 2rem;}
+  .cv-header{text-align:center;border-bottom:2.5px solid var(--color-text-primary);padding-bottom:1.2rem;margin-bottom:1.5rem;}
+  .cv-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;letter-spacing:3px;text-transform:uppercase;margin:0 0 .5rem;}
+  .cv-contact{font-size:13px;color:var(--color-text-secondary);line-height:1.8;letter-spacing:.3px;}
+  .cv-contact a{color:var(--color-text-secondary);text-decoration:none;border-bottom:0.5px solid var(--color-border-tertiary);}
+  .cv-section{margin-bottom:1.4rem;}
+  .cv-section-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;border-bottom:0.5px solid var(--color-text-primary);padding-bottom:3px;margin-bottom:.9rem;}
+  .cv-entry{display:grid;grid-template-columns:1fr auto;gap:0 1rem;margin-bottom:.9rem;}
+  .cv-entry-full{margin-bottom:.9rem;}
+  .cv-entry-title{font-size:14px;font-weight:500;}
+  .cv-entry-sub{font-size:13px;font-style:italic;color:var(--color-text-secondary);margin:.1rem 0;}
+  .cv-entry-body{font-size:13px;line-height:1.75;color:var(--color-text-secondary);margin-top:.25rem;grid-column:1/-1;}
+  .cv-date{font-size:12px;color:var(--color-text-secondary);white-space:nowrap;padding-top:2px;text-align:right;}
+  .cv-two-col{display:grid;grid-template-columns:1fr 1fr;gap:0 2.5rem;}
+  .cv-inline-link{font-size:12px;color:var(--color-text-secondary);text-decoration:none;border-bottom:0.5px solid var(--color-border-tertiary);}
+  .cv-summary{font-size:13.5px;line-height:1.85;color:var(--color-text-secondary);}
+  .cv-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.2rem 2rem;}
+  .cv-skill-row{display:flex;justify-content:space-between;font-size:13px;padding:.15rem 0;border-bottom:0.5px solid var(--color-border-tertiary);}
+  .cv-skill-name{color:var(--color-text-primary);}
+  .cv-skill-level{color:var(--color-text-secondary);font-style:italic;font-size:12px;}
+  .dot-sep{margin:0 .4em;color:var(--color-text-secondary);opacity:.5;}
 </style>
-</head>
-<body>
-<div class="container">
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h1>Valentino<br>Grande</h1>
-
-    <div class="section-title">Contact</div>
-    <p>Santa Coloma 9282<br>Rosario, Santa Fe, Argentina</p>
-    <p style="margin-top:6px">+54 341 211 5831</p>
-    <p><a href="mailto:valentinogrande972@gmail.com">valentinogrande972@gmail.com</a></p>
-    <p style="margin-top:4px"><a href="https://github.com/valentinogrande">github.com/valentinogrande</a></p>
-    <p><a href="https://www.linkedin.com/in/valentinogrande">linkedin.com/in/valentinogrande</a></p>
-
-    <div class="section-title">Info</div>
-    <p>Nationality: Argentine</p>
-    <p>Born: 15/08/2007</p>
-
-    <div class="section-title">Skills</div>
-    <div class="skill-item"><div class="skill-label">Rust</div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">Python</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">C++</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">Cybersecurity &amp; Cryptography</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">SQL</div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">Bash / Linux</div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">Web Design</div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
-    <div class="skill-item"><div class="skill-label">Teamwork</div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-
-    <div class="section-title">Languages</div>
-    <div class="lang-item">
-      <div class="lang-name">English</div>
-      <div class="lang-level">C1 – Certified</div>
-      <div class="skill-bar" style="margin-top:3px"><div class="skill-fill" style="width:85%"></div></div>
-    </div>
-    <div class="lang-item" style="margin-top:8px">
-      <div class="lang-name">Spanish</div>
-      <div class="lang-level">Native</div>
-      <div class="skill-bar" style="margin-top:3px"><div class="skill-fill" style="width:100%"></div></div>
+<div class="cv-wrap">
+  <div class="cv-header">
+    <div class="cv-name">Valentino Grande</div>
+    <div class="cv-contact">
+      Santa Coloma 9282, Rosario, Santa Fe, Argentina
+      <span class="dot-sep">·</span>+54 341 211 5831
+      <span class="dot-sep">·</span><a href="mailto:valentinogrande972@gmail.com">valentinogrande972@gmail.com</a><br>
+      <a href="https://github.com/valentinogrande">github.com/valentinogrande</a>
+      <span class="dot-sep">·</span><a href="https://www.linkedin.com/in/valentinogrande">linkedin.com/in/valentinogrande</a>
     </div>
   </div>
 
-  <!-- MAIN -->
-  <div class="main">
-    <div class="name">Valentino<br>Grande</div>
+  <div class="cv-section">
+    <div class="cv-section-title">Summary</div>
+    <div class="cv-summary">
+      Self-taught software developer since age 14, specializing in systems programming with Rust, C++, and Python. Experienced in web backend development (Actix-Web, Django), relational databases (PostgreSQL, SQL), and AI algorithm implementation. Strong foundations in cryptography, cybersecurity, and low-level system design. Currently enrolled in Systems Engineering at UTN Rosario.
+    </div>
+  </div>
 
-    <!-- SUMMARY -->
-    <div class="section">
-      <div class="section-header"><span>Summary</span></div>
-      <div class="entry-body">
-        Software developer specializing in Rust, C++, Python, Django, and Actix-Web. Strong background in artificial intelligence (graph search algorithms, TensorFlow), cryptography, and cybersecurity. Currently studying Systems Engineering at UTN Rosario. Self-taught from age 14, with a focus on low-level systems, algorithmic problem-solving, and secure software design.
+  <div class="cv-section">
+    <div class="cv-section-title">Education</div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">Universidad Tecnológica Nacional (UTN), Rosario</div>
+        <div class="cv-entry-sub">B.S. in Systems Engineering</div>
       </div>
+      <div class="cv-date">2026 – Present</div>
+      <div class="cv-entry-body">Currently enrolled in first year of Systems Engineering.</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">Colegio Stella Maris, Rosario</div>
+        <div class="cv-entry-sub">Secondary School Diploma</div>
+      </div>
+      <div class="cv-date">2021 – 2025</div>
+      <div class="cv-entry-body">Graduated with a grade point average of 8.0 / 10.0.</div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Technical Skills</div>
+    <div class="cv-skills-grid">
+      <div class="cv-skill-row"><span class="cv-skill-name">Rust</span><span class="cv-skill-level">Advanced</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">Cybersecurity &amp; Cryptography</span><span class="cv-skill-level">Proficient</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">Python</span><span class="cv-skill-level">Advanced</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">SQL / PostgreSQL</span><span class="cv-skill-level">Proficient</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">C++</span><span class="cv-skill-level">Proficient</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">Bash / Linux</span><span class="cv-skill-level">Proficient</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">Actix-Web / Django</span><span class="cv-skill-level">Proficient</span></div>
+      <div class="cv-skill-row"><span class="cv-skill-name">Web Design (Next.js / HTML)</span><span class="cv-skill-level">Intermediate</span></div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Selected Projects</div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">educapp-showcase &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/educapp-showcase">github.com/valentinogrande/educapp-showcase</a></div>
+        <div class="cv-entry-sub">Rust · Actix-Web 4 · Next.js 15 · PostgreSQL</div>
+      </div>
+      <div class="cv-date">2024 – 2025</div>
+      <div class="cv-entry-body">Full-stack school management system. Designed and implemented a RESTful backend in Rust with Actix-Web 4, a Next.js 15 frontend, and a PostgreSQL relational database. Handled authentication, data modeling, and API design end-to-end.</div>
     </div>
 
-    <!-- EDUCATION -->
-    <div class="section">
-      <div class="section-header"><span>Education</span></div>
-
-      <div class="entry">
-        <div class="entry-title">Systems Engineering — Universidad Tecnológica Nacional (UTN), Rosario</div>
-        <div class="entry-date">2026 – Present</div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">ia_rust &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/ia_rust">github.com/valentinogrande/ia_rust</a></div>
+        <div class="cv-entry-sub">Rust · Artificial Intelligence · Graph Algorithms</div>
       </div>
-
-      <div class="entry">
-        <div class="entry-title">Secondary School — Stella Maris</div>
-        <div class="entry-date">2021 – 2025</div>
-        <div class="entry-body">Graduated with a GPA of 8/10.</div>
-      </div>
+      <div class="cv-date">2024</div>
+      <div class="cv-entry-body">Implementation of classical AI search algorithms in Rust: A*, DEA*, RBFS, BFS, DFS, bidirectional search, greedy best-first, and uniform cost search. Includes an interactive maze solver demonstrating greedy navigation in real time.</div>
     </div>
 
-    <!-- PROJECTS -->
-    <div class="section">
-      <div class="section-header"><span>Projects</span></div>
-
-      <div class="entry">
-        <div class="entry-title">ia_rust &nbsp;<a class="project-link" href="https://github.com/valentinogrande/ia_rust">github.com/valentinogrande/ia_rust</a></div>
-        <div class="entry-body">
-          Implementation of classic AI search algorithms in Rust: A*, DEA*, RBFS, BFS, DFS, bidirectional search, greedy best-first, and uniform cost search. Includes a maze solver with greedy best-first navigation.
-        </div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">AI</span><span class="tag">Algorithms</span></div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">cryptograph &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/cryptograph">github.com/valentinogrande/cryptograph</a></div>
+        <div class="cv-entry-sub">Rust · Cryptography · Number Theory</div>
       </div>
-
-      <div class="entry">
-        <div class="entry-title">educapp-showcase &nbsp;<a class="project-link" href="https://github.com/valentinogrande/educapp-showcase">github.com/valentinogrande/educapp-showcase</a></div>
-        <div class="entry-body">
-          School management system with a Rust/Actix-Web 4 backend, Next.js 15 frontend, and PostgreSQL database.
-        </div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">Actix-Web</span><span class="tag">Next.js</span><span class="tag">PostgreSQL</span></div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">bfuzz &nbsp;<a class="project-link" href="https://github.com/valentinogrande/bfuzz">github.com/valentinogrande/bfuzz</a></div>
-        <div class="entry-body">
-          Multi-threaded web fuzzer built in Rust with wordlist support. Designed for security testing and reconnaissance.
-        </div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">Cybersecurity</span><span class="tag">Multithreading</span></div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">chess &nbsp;<a class="project-link" href="https://github.com/valentinogrande/chess">github.com/valentinogrande/chess</a></div>
-        <div class="entry-body">Chess engine implemented in Rust.</div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">Game Logic</span></div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Arkadian &nbsp;<a class="project-link" href="https://github.com/valentinogrande/Arkadian">github.com/valentinogrande/Arkadian</a></div>
-        <div class="entry-body">2D game built in Rust with integrated audio.</div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">Game Dev</span></div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">snake_game &nbsp;<a class="project-link" href="https://github.com/valentinogrande/snake_game">github.com/valentinogrande/snake_game</a></div>
-        <div class="entry-body">Snake game implemented in Rust.</div>
-        <div style="margin-top:5px"><span class="tag">Rust</span><span class="tag">Game Dev</span></div>
-      </div>
+      <div class="cv-date">2025</div>
+      <div class="cv-entry-body">Educational cryptography library published as a Rust crate. Implements classical ciphers (Caesar, Affine, XOR stream cipher), number-theoretic primitives (Euclidean algorithm, Bézout identity, modular inverse), and a Linear Feedback Shift Register (LFSR) pseudorandom generator. Designed for clarity and low-level understanding of cipher mechanics.</div>
     </div>
 
-    <!-- COURSES -->
-    <div class="section">
-      <div class="section-header"><span>Courses</span></div>
-      <div class="entry">
-        <div class="entry-title">Introduction to AI in Python — Domestika</div>
-        <div class="entry-date">March 2023 &nbsp;|&nbsp; Grade: 10/10</div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">bfuzz &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/bfuzz">github.com/valentinogrande/bfuzz</a></div>
+        <div class="cv-entry-sub">Rust · Cybersecurity · Multithreading</div>
       </div>
+      <div class="cv-date">2024</div>
+      <div class="cv-entry-body">Multi-threaded web fuzzer built in Rust with wordlist support. Designed for security testing and endpoint reconnaissance; leverages Rust's concurrency model for high-performance parallel requests.</div>
     </div>
 
-    <!-- VOLUNTEER -->
-    <div class="section">
-      <div class="section-header"><span>Volunteer</span></div>
-      <div class="entry">
-        <div class="entry-title">Tutor — Viaclub, Opus Dei</div>
-        <div class="entry-date">February 2023 – Present</div>
-        <div class="entry-body">
-          Mentor for students in grades 5–7. Deliver educational talks, support academic growth, and foster teamwork in a values-based environment.
-        </div>
+    <div class="cv-two-col">
+      <div class="cv-entry-full">
+        <div class="cv-entry-title">chess &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/chess">↗</a></div>
+        <div class="cv-entry-sub" style="font-size:12px">Rust · Game Logic</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--color-text-secondary);margin-top:.2rem">Full chess engine in Rust, including move generation, rule enforcement, and game state management.</div>
+      </div>
+      <div class="cv-entry-full">
+        <div class="cv-entry-title">Arkadian &nbsp;<a class="cv-inline-link" href="https://github.com/valentinogrande/Arkadian">↗</a></div>
+        <div class="cv-entry-sub" style="font-size:12px">Rust · Game Development</div>
+        <div style="font-size:13px;line-height:1.7;color:var(--color-text-secondary);margin-top:.2rem">2D game built from scratch in Rust with integrated audio engine and real-time rendering.</div>
       </div>
     </div>
+  </div>
 
-    <!-- INTERESTS -->
-    <div class="section">
-      <div class="section-header"><span>Interests</span></div>
-      <div class="entry-body">
-        Chess (strategy and continuous improvement), algorithmic problem-solving, cryptography, artificial intelligence, and emerging technologies.
+  <div class="cv-section">
+    <div class="cv-section-title">Courses &amp; Certifications</div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">English Language — C1 Certificate</div>
+        <div class="cv-entry-sub">Certified · Native Spanish</div>
       </div>
+      <div class="cv-date">Dec. 2025</div>
     </div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">Introduction to Artificial Intelligence in Python</div>
+        <div class="cv-entry-sub">Domestika</div>
+      </div>
+      <div class="cv-date">March 2023</div>
+      <div class="cv-entry-body">Final grade: 10 / 10. Covered graph search algorithms, TensorFlow, and supervised learning fundamentals.</div>
+    </div>
+  </div>
 
+  <div class="cv-section">
+    <div class="cv-section-title">Volunteer Experience</div>
+    <div class="cv-entry">
+      <div class="cv-entry-left">
+        <div class="cv-entry-title">Academic Tutor — Viaclub, Opus Dei, Rosario</div>
+      </div>
+      <div class="cv-date">Feb. 2023 – Present</div>
+      <div class="cv-entry-body">Mentor to students in grades 5–7. Deliver structured educational sessions, provide academic support across core subjects, and facilitate values-based teamwork activities. Responsible for curriculum planning and individual student progress tracking.</div>
+    </div>
+  </div>
+
+  <div class="cv-section">
+    <div class="cv-section-title">Interests</div>
+    <div class="cv-summary">
+      Competitive chess (strategic analysis and pattern recognition); algorithmic problem-solving and competitive programming; applied cryptography; artificial intelligence research; systems-level software design.
+    </div>
   </div>
 </div>
-</body>
-</html>
